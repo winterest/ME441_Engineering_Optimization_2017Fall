@@ -26,6 +26,7 @@ def InitialBracketing(fLinear):
         xl=xm
         xm=xu
         xu=xm+(1+cG)*(xm-xl)
+        print(xl,xm,xu,fLinear(xl),fLinear(xm),fLinear(xu))
     return(xl,xu)
 
 def GoldenSection(fLinear,a,b):
@@ -38,8 +39,8 @@ def GoldenSection(fLinear,a,b):
     fd=fLinear(d)
     i=0
     print('Step#: ', i, 'a             b             c             d             fa             fb             fc             fd\n')
-
     while((np.abs(a-b))>0.001):
+        print('Step#: ', i, a,  b, c, d, fa, fb,fc,fd,b-a,'\n')
         if(fc<fd):
             b=d
             fb=fd
@@ -55,7 +56,6 @@ def GoldenSection(fLinear,a,b):
             d=a+cG*(b-a)
             fd=fLinear(d)
         i+=1
-        print('Step#: ', i, a,  b, c, d, fa, fb,fc,fd,'\n')
 #    print(a,b)
     return np.array([fLinear((a+b)/2),(a+b)/2])
 
