@@ -8,7 +8,7 @@ import numpy as np
 
 cG=(-1+np.sqrt(5))/2
 #cG=0.618
-print("cG=",cG)
+#print("cG=",cG)
 delta=0.05
 
 #def fLinear(x):
@@ -36,7 +36,7 @@ def GoldenSection(fLinear,a,b):
     fd=fLinear(d)
 
     while((np.abs(a-b))>0.001):
-        print("a=",a,"b=",b,"fc=",fc,"fd=",fd)
+#        print("a=",a,"b=",b,"fc=",fc,"fd=",fd)
         if(fc<fd):
             b=d
             d=c
@@ -49,7 +49,7 @@ def GoldenSection(fLinear,a,b):
             d=a+cG*(b-a)
             fc=fd
             fd=fLinear(d)
-    print(a,b)
+#    print(a,b)
     return np.array([fLinear((a+b)/2),(a+b)/2])
 
 #(a,b)=(InitialBracketing(fLinear))

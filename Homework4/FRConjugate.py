@@ -6,7 +6,7 @@ Author: Xiaoyi Liu
 '''
 import numpy as np
 #import matplotlib.pyplot as plt
-from GoldenSection import GoldenSection
+from GoldenSection_For_Multiopt import GoldenSection
 
 def fQuar(x):
     return x[0]**2+2*x[1]**2+2*x[2]**2 + 2*x[0]*x[1]+2*x[1]*x[2]
@@ -15,13 +15,13 @@ def dfQuar(x):
     return np.array([2*x[0]+2*x[1], 2*x[0]+4*x[1]+2*x[2], 2*x[1]+4*x[2]])
 
 #SteepestDescentAlgorithm
-x0=[2,4,10]
+x0=[1,1,1]
 f0=fQuar(x0)
 c0=dfQuar(x0)
 c1=c0
 d0=-c0
 d1=d0
-epsilon=0.0001
+epsilon=0.001
 i=0
 while (np.linalg.norm(d1)>epsilon and i<10):
     print('Step # = ',i)

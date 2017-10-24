@@ -37,7 +37,7 @@ def GoldenSection(fLinear,a,b):
     fc=fLinear(c)
     fd=fLinear(d)
     i=0
-    print('Step#: ', i, 'a             b             c             d             fa             fb             fc             fd')
+    print('Step#: ', i, 'a             b             c             d             fa             fb             fc             fd\n')
 
     while((np.abs(a-b))>0.001):
         if(fc<fd):
@@ -55,7 +55,7 @@ def GoldenSection(fLinear,a,b):
             d=a+cG*(b-a)
             fd=fLinear(d)
         i+=1
-        print('Step#: ', i, a,  b, c, d, fa, fb,fc,fd)
+        print('Step#: ', i, a,  b, c, d, fa, fb,fc,fd,'\n')
 #    print(a,b)
     return np.array([fLinear((a+b)/2),(a+b)/2])
 
