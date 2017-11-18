@@ -5,7 +5,7 @@ Class:  ME441_EngineeringOptimization
 Author: Xiaoyi Liu
 '''
 import numpy as np
-#import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 from GoldenSection_For_Multiopt import GoldenSection
 
 def fQuar(x):
@@ -20,7 +20,10 @@ f0=fQuar(x0)
 df0=dfQuar(x0)
 epsilon=0.001
 i=0
+y=[]
+
 while (np.linalg.norm(df0)>epsilon):
+    y.append(f0)
     print('Step # = ',i)
     dr=-df0
     def localf(alpha):
@@ -29,7 +32,10 @@ while (np.linalg.norm(df0)>epsilon):
     print('df= ', df0, 'x= ', x0,'alpha= ',alpha0, 'f0= ',f0,'norm= ',np.linalg.norm(df0))
     x0=x0+alpha0*dr
     f0=fQuar(x0)
-#    df00=df0
     df0=dfQuar(x0)
-#    print(np.dot(df00,df0))
-    i=i+1;
+    i=i+1
+plt.plot(y,'-*')
+plt.xlabel('Iterations')
+plt.ylabel('Objective Function')
+plt.title('Histogram of Steepest Descent')
+plt.show()

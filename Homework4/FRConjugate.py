@@ -5,7 +5,7 @@ Class:  ME441_EngineeringOptimization
 Author: Xiaoyi Liu
 '''
 import numpy as np
-#import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 from GoldenSection_For_Multiopt import GoldenSection
 
 def fQuar(x):
@@ -21,9 +21,11 @@ c0=dfQuar(x0)
 c1=c0
 d0=-c0
 d1=d0
-epsilon=0.001
+epsilon=0.0001
 i=0
+#y=[]
 while (np.linalg.norm(d1)>epsilon and i<10):
+#    y.append(f0)
     print('Step # = ',i)
     def localf(alpha):
         return fQuar(x0+alpha*d1)
@@ -38,3 +40,9 @@ while (np.linalg.norm(d1)>epsilon and i<10):
     print('c0= ',c0,'beta=',(np.linalg.norm(c1)/np.linalg.norm(c0))**2,'c1=',c1)
     print(d1)
     i=i+1;
+
+plt.plot(y,'-*')
+plt.xlabel('Iterations')
+plt.ylabel('Objective Function')
+plt.title('Histogram of Fletcher-Reeves Conjugate Gradient')
+plt.show()
